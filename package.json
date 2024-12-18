@@ -16,6 +16,10 @@
   },
   "keywords": [],
   "author": "tuki0918",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tuki0918/dotenv-zod-validator.git"
+  },
   "license": "MIT",
   "dependencies": {
     "zod": "^3.24.1"

@@ -1,5 +1,7 @@
 # dotenv-zod-validator
 
+![NPM Version](https://img.shields.io/npm/v/dotenv-zod-validator)
+
 `dotenv-zod-validator` is a very lightweight library for validating and transforming environment variables using Zod.
 
 ## Installation
