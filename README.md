@@ -47,8 +47,8 @@ const env = zenv.validate(schema);
 | object | Alias for `z.object` |
 | enum | Alias for `z.enum` |
 | string | Alias for `z.string` |
-| number | Converts to a number and validates as a non-negative integer. (DEFAULT: `0`) |
-| boolean | Converts to a boolean. (DEFAULT: `false` / TRUE: `true`, `1` / FALSE: `other`) |
+| number | Converts to a number and validates as a non-negative integer. |
+| boolean | Converts to a boolean. (TRUE: `true`, `1` / FALSE: `other`) |
 
 ## Tests
 

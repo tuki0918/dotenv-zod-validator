@@ -17,9 +17,16 @@ function validate<T extends ZodSchema>(
 
 // Custom Zod methods
 const envNumber = () =>
-  z.preprocess((v) => Number(v) || 0, z.number().int().nonnegative());
+  z.preprocess(
+    (v) => (v === undefined || v === "" ? undefined : Number(v)),
+    z.number().int().nonnegative(),
+  );
 const envBoolean = () =>
-  z.preprocess((v) => v === "true" || v === "1", z.boolean());
+  z.preprocess(
+    (v) =>
+      v === undefined || v === "" ? undefined : v === "true" || v === "1",
+    z.boolean(),
+  );
 
 export const zenv = {
   object: z.object,
