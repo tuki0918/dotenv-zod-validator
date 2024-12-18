@@ -1,6 +1,6 @@
 {
   "name": "dotenv-zod-validator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A very lightweight library for validating and transforming environment variables using Zod.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
