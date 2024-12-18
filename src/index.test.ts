@@ -15,7 +15,7 @@ describe("validateEnv", () => {
       APP_ENV: "development",
     };
 
-    const result = zenv.validateEnv(schema, env);
+    const result = zenv.validate(schema, env);
 
     expect(result).toEqual({
       PORT: 3000,
@@ -37,7 +37,7 @@ describe("validateEnv", () => {
       APP_ENV: "invalid_env",
     };
 
-    expect(() => zenv.validateEnv(schema, invalidEnv)).toThrow(
+    expect(() => zenv.validate(schema, invalidEnv)).toThrow(
       "Invalid environment variables",
     );
   });

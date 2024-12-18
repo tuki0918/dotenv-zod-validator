@@ -1,6 +1,6 @@
 import { type ZodSchema, z } from "zod";
 
-function validateEnv<T extends ZodSchema>(
+function validate<T extends ZodSchema>(
   schema: T,
   env: NodeJS.ProcessEnv | Record<string, string | undefined> = process.env,
 ): z.infer<T> {
@@ -27,5 +27,5 @@ export const zenv = {
   string: z.string,
   number: envNumber,
   boolean: envBoolean,
-  validateEnv,
+  validate,
 };
