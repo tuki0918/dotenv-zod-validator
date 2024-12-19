@@ -16,7 +16,7 @@ npm install dotenv-validator
 
 .env
 
-```node
+```bash
 NODE_ENV="development"
 PORT="3000"
 BOOLEAN_FLAG="true"
@@ -24,7 +24,7 @@ BOOLEAN_FLAG="true"
 
 code
 
-```
+```typescript
 import { zenv } from "dotenv-zod-validator";
 
 const schema = zenv.object({
@@ -39,6 +39,39 @@ const env = zenv.validate(schema);
 // PORT: 3000
 // BOOLEAN_FLAG: true
 ```
+
+<details>
+
+<summary>Next.js</summary>
+
+file: utils/dotenv.public.ts
+
+```typescript
+import { zenv } from "dotenv-zod-validator";
+
+export const schema = zenv.object({
+    NEXT_PUBLIC_MY_VALUE: zenv.string(),
+});
+
+export const env = zenv.validate(schema, {
+    NEXT_PUBLIC_MY_VALUE: process.env.NEXT_PUBLIC_MY_VALUE,
+});
+```
+
+file: utils/dotenv.ts
+
+```typescript
+import { zenv } from "dotenv-zod-validator";
+import { schema as publicSchema } from "@/utils/dotenv.public";
+
+const schema = zenv.object({
+    MY_SECRET: zenv.string(),
+});
+
+export const env = zenv.validate(publicSchema.merge(schema));
+```
+
+</details>
 
 ## Custom Schemas
 
