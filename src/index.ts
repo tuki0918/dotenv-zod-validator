@@ -15,16 +15,17 @@ function validate<T extends ZodSchema>(
   return result.data;
 }
 
+const isUndefinedOrEmpty = (v: unknown): boolean => v === undefined || v === "";
+
 // Custom Zod methods
 const envNumber = () =>
   z.preprocess(
-    (v) => (v === undefined || v === "" ? undefined : Number(v)),
+    (v) => (isUndefinedOrEmpty(v) ? undefined : Number(v)),
     z.number().int().nonnegative(),
   );
 const envBoolean = () =>
   z.preprocess(
-    (v) =>
-      v === undefined || v === "" ? undefined : v === "true" || v === "1",
+    (v) => (isUndefinedOrEmpty(v) ? undefined : v === "true" || v === "1"),
     z.boolean(),
   );
 
