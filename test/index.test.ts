@@ -1,5 +1,5 @@
 import { describe, expect, it, test } from "vitest";
-import { zenv } from ".";
+import { zenv } from "../src";
 
 describe("zenv.validate", () => {
   it("should validate correct environment variables", () => {
