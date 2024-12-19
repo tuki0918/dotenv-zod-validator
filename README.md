@@ -9,7 +9,7 @@
 ## Installation
 
 ```bash
-npm install dotenv-validator
+npm install dotenv-zod-validator
 ```
 
 ## Usage
