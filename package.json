@@ -4,6 +4,7 @@
   "description": "A very lightweight library for validating and transforming environment variables using Zod.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
     "build": "tsc",
     "build:check": "tsc --noEmit",
