@@ -73,15 +73,15 @@ export const env = zenv.validate(publicSchema.merge(schema));
 
 </details>
 
-## Custom Schemas
+## Custom Helpers
 
-| Method | Description |
-| ---- | ---- |
-| object | Alias for `z.object` |
-| enum | Alias for `z.enum` |
-| string | Alias for `z.string` |
-| number | Converts to a number and validates as a non-negative integer. |
-| boolean | Converts to a boolean. (TRUE: `true`, `1` / FALSE: `other`) |
+| Method | Description | undefined | empty | and error |
+| ---- | ---- | ---- | ---- | ---- |
+| object | Alias for `z.object` | _ | ✅️ | _ |
+| enum | Alias for `z.enum` | ❌️ | ❌️ | `invalid text` |
+| string | Alias for `z.string` | ❌️ | ✅️ | _ |
+| number | Converts to a number and validates as a non-negative integer. | ❌️ | ❌️ | `-1`, `1.1`, `invalid number` |
+| boolean | Converts to a boolean. (TRUE: `true`, `1` / FALSE: `other`) | ❌️ | ❌️ | _ |
 
 ## Tests
 
