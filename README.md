@@ -77,7 +77,7 @@ export const env = zenv.validate(publicSchema.merge(schema));
 
 | Method | Description | undefined | empty | and error |
 | ---- | ---- | ---- | ---- | ---- |
-| object | Alias for `z.object` | _ | ✅️ | _ |
+| object | Alias for `z.object` | _ | _ | _ |
 | enum | Alias for `z.enum` | ❌️ | ❌️ | `invalid text` |
 | string | Alias for `z.string` | ❌️ | ✅️ | _ |
 | number | Converts to a number and validates as a non-negative integer. | ❌️ | ❌️ | `-1`, `1.1`, `invalid number` |
