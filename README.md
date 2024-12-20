@@ -81,7 +81,7 @@ export const env = zenv.validate(publicSchema.merge(schema));
 | enum | Alias for `z.enum` | ❌️ | ❌️ | `invalid text` |
 | string | Alias for `z.string` | ❌️ | ✅️ | _ |
 | number | Converts to a number and validates as a non-negative integer. | ❌️ | ❌️ | `-1`, `1.1`, `invalid number` |
-| boolean | Converts to a boolean. (TRUE: `true`, `1` / FALSE: `other`) | ❌️ | ❌️ | _ |
+| boolean | Converts to a boolean. (TRUE: `true`, `TRUE`, `1` / FALSE: `other`) | ❌️ | ❌️ | _ |
 
 ## Tests
 

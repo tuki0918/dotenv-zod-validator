@@ -141,9 +141,14 @@ describe("zenv.boolean", () => {
   test.each([
     ["1", true],
     ["true", true],
+    ["True", true],
+    ["TRUE", true],
     ["-1", false],
     ["0", false],
     ["2", false],
+    ["false", false],
+    ["False", false],
+    ["FALSE", false],
     ["invalid_text", false],
   ])('"%s" to %s', (v, expected) => {
     const env = { VALUE: v };

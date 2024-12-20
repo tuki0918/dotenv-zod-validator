@@ -24,10 +24,11 @@ const envNumber = () =>
     z.number().int().nonnegative(),
   );
 const envBoolean = () =>
-  z.preprocess(
-    (v) => (isUndefinedOrEmpty(v) ? undefined : v === "true" || v === "1"),
-    z.boolean(),
-  );
+  z.preprocess((v) => {
+    if (isUndefinedOrEmpty(v)) return undefined;
+    if (typeof v === "string") return v.toLowerCase() === "true" || v === "1";
+    return v === true || v === 1;
+  }, z.boolean());
 
 export const zenv = {
   object: z.object,
