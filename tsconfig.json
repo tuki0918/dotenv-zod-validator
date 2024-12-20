@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
     "target": "ESNext",
     "moduleResolution": "bundler",
-    "strict": true,
-    "esModuleInterop": true,
-    "declaration": true,
-    "sourceMap": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "typeRoots": ["./node_modules/@types"]
+    "rootDir": "./",
+    "types": ["vitest/globals"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "test/**/*.ts"],
   "exclude": ["node_modules"]
 }

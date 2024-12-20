@@ -6,8 +6,8 @@
   "types": "dist/index.d.ts",
   "files": ["dist"],
   "scripts": {
-    "build": "tsc",
-    "build:check": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "build:check": "tsc -p tsconfig.build.json --noEmit",
     "check": "biome check .",
     "check:fix": "biome check --write .",
     "prepare": "husky",
