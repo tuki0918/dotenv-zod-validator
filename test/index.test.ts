@@ -23,6 +23,19 @@ describe("zenv.validate", () => {
     });
   });
 
+  it("should not access environment variables if schema is not defined", () => {
+    const schema = zenv.object({});
+    const env = {
+      PORT: "3000",
+      DEBUG_MODE: "true",
+      APP_ENV: "development",
+    };
+
+    const result = zenv.validate(schema, env);
+
+    expect(result).toEqual({});
+  });
+
   it("should throw an error for invalid environment variables", () => {
     const schema = zenv.object({
       PORT: zenv.number(),
