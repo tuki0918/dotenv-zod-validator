@@ -8,6 +8,6 @@
     "rootDir": "./",
     "types": ["vitest/globals"]
   },
-  "include": ["src/**/*.ts", "test/**/*.ts"],
+  "include": ["src", "test"],
   "exclude": ["node_modules"]
 }
