@@ -38,6 +38,9 @@ const ENV = zenv.validate(schema);
 // NODE_ENV: "development"
 // PORT: 3000
 // BOOLEAN_FLAG: true
+
+// Cannot assign to 'NODE_ENV' because it is a read-only property.
+// ENV.NODE_ENV = "production"
 ```
 
 <details>
