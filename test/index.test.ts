@@ -36,6 +36,29 @@ describe("zenv.validate", () => {
     expect(result).toEqual({});
   });
 
+  it("should throw an error if re-assigned environment variables", () => {
+    const schema = zenv.object({
+      PORT: zenv.number(),
+    });
+
+    const env = {
+      PORT: "3000",
+    };
+
+    const result = zenv.validate(schema, env);
+
+    expect(result).toEqual({
+      PORT: 3000,
+    });
+
+    expect(() => {
+      // @ts-expect-error:
+      result.PORT = "4000";
+    }).toThrow(
+      "Cannot assign to read only property 'PORT' of object '#<Object>'",
+    );
+  });
+
   it("should throw an error for invalid environment variables", () => {
     const schema = zenv.object({
       PORT: zenv.number(),

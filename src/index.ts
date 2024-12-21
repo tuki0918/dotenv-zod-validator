@@ -3,8 +3,8 @@ import { type ZodSchema, z } from "zod";
 function validate<T extends ZodSchema>(
   schema: T,
   env: NodeJS.ProcessEnv | Record<string, string | undefined> = process.env,
-): z.infer<T> {
-  const result = schema.safeParse(env);
+) {
+  const result = schema.readonly().safeParse(env);
   if (!result.success) {
     console.error(
       "Environment variable validation failed:",
