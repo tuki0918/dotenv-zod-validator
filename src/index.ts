@@ -20,8 +20,8 @@ const isUndefinedOrEmpty = (v: unknown): boolean => v === undefined || v === "";
 // Custom Zod methods
 const envNumber = () =>
   z.preprocess(
-    (v) => (isUndefinedOrEmpty(v) ? undefined : Number(v)),
-    z.number().int().nonnegative(),
+    (v) => (isUndefinedOrEmpty(v) ? undefined : v),
+    z.coerce.number(),
   );
 const envBoolean = () =>
   z.preprocess((v) => {

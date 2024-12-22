@@ -139,21 +139,20 @@ describe("zenv.number", () => {
     ["5.", 5],
     ["99", 99],
     ["0b1010", 10],
+    ["-1", -1],
+    ["1.1", 1.1],
   ])('"%s" to %s', (v, expected) => {
     const env = { VALUE: v };
     const result = zenv.validate(schema, env);
     expect(result).toEqual({ VALUE: expected });
   });
 
-  test.each([["-1"], ["1.1"], ["x"], [""], [undefined]])(
-    '"%s" to throw an error',
-    (v) => {
-      const env = { VALUE: v };
-      expect(() => zenv.validate(schema, env)).toThrow(
-        "Invalid environment variables",
-      );
-    },
-  );
+  test.each([["x"], [""], [undefined]])('"%s" to throw an error', (v) => {
+    const env = { VALUE: v };
+    expect(() => zenv.validate(schema, env)).toThrow(
+      "Invalid environment variables",
+    );
+  });
 });
 
 describe("zenv.boolean", () => {
