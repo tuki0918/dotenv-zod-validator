@@ -12,7 +12,7 @@
 npm install dotenv-zod-validator
 ```
 
-## Usage
+## Usage (Node)
 
 .env
 
@@ -43,11 +43,16 @@ const ENV = zenv.validate(schema);
 // ENV.NODE_ENV = "production"
 ```
 
-<details>
+## Usage (Next.js)
 
-<summary>Next.js</summary>
+.env
 
-file: utils/dotenv.public.ts
+```bash
+NEXT_PUBLIC_MY_VALUE="abc"
+MY_SECRET="xyz"
+```
+
+utils/dotenv.public.ts
 
 ```typescript
 import { zenv } from "dotenv-zod-validator";
@@ -59,9 +64,10 @@ export const schema = zenv.object({
 export const ENV = zenv.validate(schema, {
     NEXT_PUBLIC_MY_VALUE: process.env.NEXT_PUBLIC_MY_VALUE,
 });
+// NEXT_PUBLIC_MY_VALUE: "abc"
 ```
 
-file: utils/dotenv.ts
+utils/dotenv.ts
 
 ```typescript
 import { zenv } from "dotenv-zod-validator";
@@ -72,9 +78,9 @@ const schema = zenv.object({
 });
 
 export const ENV = zenv.validate(publicSchema.merge(schema));
+// NEXT_PUBLIC_MY_VALUE: "abc"
+// MY_SECRET: "xyz"
 ```
-
-</details>
 
 ## Custom Helpers
 
