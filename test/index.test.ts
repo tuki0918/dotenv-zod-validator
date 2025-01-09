@@ -73,7 +73,7 @@ describe("zenv.validate", () => {
     };
 
     expect(() => zenv.validate(schema, invalidEnv)).toThrow(
-      "Invalid environment variables",
+      /^Invalid environment variables: /,
     );
   });
 });
@@ -97,7 +97,7 @@ describe("zenv.string", () => {
   test.each([[undefined]])('"%s" to throw an error', (v) => {
     const env = { SITE_NAME: v };
     expect(() => zenv.validate(schema, env)).toThrow(
-      "Invalid environment variables",
+      /^Invalid environment variables: /,
     );
   });
 });
@@ -122,7 +122,7 @@ describe("zenv.enum", () => {
     (v) => {
       const env = { VALUE: v };
       expect(() => zenv.validate(schema, env)).toThrow(
-        "Invalid environment variables",
+        /^Invalid environment variables: /,
       );
     },
   );
@@ -162,7 +162,7 @@ describe("zenv.number", () => {
     (v) => {
       const env = { VALUE: v };
       expect(() => zenv.validate(schema, env)).toThrow(
-        "Invalid environment variables",
+        /^Invalid environment variables: /,
       );
     },
   );
@@ -194,7 +194,7 @@ describe("zenv.boolean", () => {
   test.each([[""], [undefined]])('"%s" to throw an error', (v) => {
     const env = { VALUE: v };
     expect(() => zenv.validate(schema, env)).toThrow(
-      "Invalid environment variables",
+      /^Invalid environment variables: /,
     );
   });
 });
