@@ -20,6 +20,7 @@ npm install dotenv-zod-validator
 NODE_ENV="development"
 PORT="3000"
 BOOLEAN_FLAG="true"
+__OTHER__="__other__"
 ```
 
 code
@@ -30,14 +31,15 @@ import { zenv } from "dotenv-zod-validator";
 const schema = zenv.object({
     NODE_ENV: zenv.enum(["development", "production", "test"]),
     PORT: zenv.number(),
-    OPTIONAL_VAR: zenv.string().optional(),
     BOOLEAN_FLAG: zenv.boolean(),
+    OPTIONAL_VAR: zenv.string().optional(),
 });
 
 const ENV = zenv.validate(schema);
 // NODE_ENV: "development"
 // PORT: 3000
 // BOOLEAN_FLAG: true
+// OPTIONAL_VAR: undefined
 
 // Cannot assign to 'NODE_ENV' because it is a read-only property.
 // ENV.NODE_ENV = "production"

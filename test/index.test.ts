@@ -3,32 +3,34 @@ import { zenv } from "../src";
 describe("zenv.validate", () => {
   it("should validate correct environment variables", () => {
     const schema = zenv.object({
+      NODE_ENV: zenv.enum(["development", "production", "test"]),
       PORT: zenv.number(),
-      DEBUG_MODE: zenv.boolean(),
-      APP_ENV: zenv.enum(["development", "production", "test"]),
+      BOOLEAN_FLAG: zenv.boolean(),
+      OPTIONAL_VAR: zenv.string().optional(),
     });
 
     const env = {
+      NODE_ENV: "development",
       PORT: "3000",
-      DEBUG_MODE: "true",
-      APP_ENV: "development",
+      BOOLEAN_FLAG: "true",
+      __OTHER__: "__other__",
     };
 
     const result = zenv.validate(schema, env);
 
     expect(result).toEqual({
+      NODE_ENV: "development",
       PORT: 3000,
-      DEBUG_MODE: true,
-      APP_ENV: "development",
+      BOOLEAN_FLAG: true,
     });
   });
 
   it("should not access environment variables if schema is not defined", () => {
     const schema = zenv.object({});
     const env = {
+      NODE_ENV: "development",
       PORT: "3000",
-      DEBUG_MODE: "true",
-      APP_ENV: "development",
+      BOOLEAN_FLAG: "true",
     };
 
     const result = zenv.validate(schema, env);
@@ -61,15 +63,15 @@ describe("zenv.validate", () => {
 
   it("should throw an error for invalid environment variables", () => {
     const schema = zenv.object({
+      NODE_ENV: zenv.enum(["development", "production", "test"]),
       PORT: zenv.number(),
-      DEBUG_MODE: zenv.boolean(),
-      APP_ENV: zenv.enum(["development", "production", "test"]),
+      BOOLEAN_FLAG: zenv.boolean(),
     });
 
     const invalidEnv = {
+      NODE_ENV: "invalid_env",
       PORT: "not_a_number",
-      DEBUG_MODE: "invalid_boolean",
-      APP_ENV: "invalid_env",
+      BOOLEAN_FLAG: "invalid_boolean",
     };
 
     expect(() => zenv.validate(schema, invalidEnv)).toThrow(
