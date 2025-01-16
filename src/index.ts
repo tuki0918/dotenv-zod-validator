@@ -10,7 +10,6 @@ function validate<T extends ZodSchema>(
     const validationError = fromError(result.error, {
       prefix: "Invalid environment variables",
     });
-    console.error(validationError.toString());
     throw validationError;
   }
   return result.data;
