@@ -82,6 +82,15 @@ export const ENV = zenv.validate(publicSchema.merge(schema));
 // MY_SECRET: "xyz"
 ```
 
+(optional) [instrumentation.ts](https://nextjs.org/docs/app/building-your-application/optimizing/instrumentation)
+
+
+You can enforce environment variable checks when starting the Next.js server.
+
+```
+import "@/utils/dotenv";
+```
+
 ## Custom Helpers
 
 | Method | Description | undefined | empty | and error |
