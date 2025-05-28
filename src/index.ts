@@ -1,5 +1,4 @@
-import { type ZodSchema, z } from "zod";
-import { fromError } from "zod-validation-error";
+import { type ZodSchema, z } from "zod/v4";
 
 function validate<T extends ZodSchema>(
   schema: T,
@@ -7,10 +6,8 @@ function validate<T extends ZodSchema>(
 ) {
   const result = schema.readonly().safeParse(env);
   if (!result.success) {
-    const validationError = fromError(result.error, {
-      prefix: "Invalid environment variables",
-    });
-    throw validationError;
+    // Zod標準エラーをそのまま投げる
+    throw new Error(`Invalid environment variables: ${result.error.message}`);
   }
   return result.data;
 }
