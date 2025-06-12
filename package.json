@@ -26,8 +26,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "zod": "^3.24.1",
-    "zod-validation-error": "^3.4.0"
+    "zod": "^3.25.63",
+    "zod-validation-error": "^3.5.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
